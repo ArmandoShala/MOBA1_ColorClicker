@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.Button
 import ch.codebros.moba1_colorclicker.databinding.FragmentFirstBinding
 
 /**
@@ -14,6 +14,8 @@ import ch.codebros.moba1_colorclicker.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private var buttons : MutableList<Button> = mutableListOf()
+    private lateinit var amountOfButtons: MainActivity.Difficulty
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
@@ -31,8 +33,10 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        initTable()
+
+        binding.buttonStart.setOnClickListener {
+            // start game
         }
     }
 
@@ -40,4 +44,35 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun initTable() {
+        binding.tableLayout.removeAllViews()
+        generateButtons()
+        addButtonsToTable()
+    }
+
+
+    fun generateButtons() {
+        // generate buttons
+        for(i in 0..10) {
+            val button = Button(context)
+            button.text = "$i"
+            button.id = i
+            buttons.add(button)
+        }
+    }
+
+    // add buttons to table
+    fun addButtonsToTable() {
+        buttons.forEach { btn -> binding.tableLayout.addView(btn) }
+    }
+
+    public fun setAmountOfButtons(amount: MainActivity.Difficulty) {
+        amountOfButtons = amount
+    }
+    public fun getAmountOfButtons(): MainActivity.Difficulty {
+        return amountOfButtons
+    }
+
+
 }
