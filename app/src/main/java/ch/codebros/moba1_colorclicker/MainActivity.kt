@@ -43,22 +43,22 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        if (firstFragment === null) {
-            firstFragment =
-                supportFragmentManager.findFragmentByTag("myFragmentTag") as FirstFragment
-        }
 
-        // get first fragment
+        // store fragment and call functions
+//        if (firstFragment === null) {
+//            firstFragment = supportFragmentManager.findFragmentByTag("myFragmentTag") as FirstFragment
+//        }
+
         val difficulty: Difficulty = when (item.itemId) {
             R.id.action_settingsEasy -> Difficulty.EASY
             R.id.action_settingsMedium -> Difficulty.MEDIUM
             R.id.action_settingsHard -> Difficulty.HARD
             else -> Difficulty.EASY
         }
-        firstFragment?.setAmountOfButtons(difficulty)
-        Snackbar.make(binding.root, "Set difficulty to " + difficulty.name, Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show()
-        firstFragment?.initTable()
+
+//        firstFragment?.setAmountOfButtons(difficulty.value)
+        Snackbar.make(binding.root, "Set difficulty to " + difficulty.name, Snackbar.LENGTH_LONG) .setAction("Action", null).show()
+//        firstFragment?.initTable()
         return true
     }
 
