@@ -8,24 +8,36 @@
 
     <Button
         android:id="@+id/button_first"
-        android:layout_width="406dp"
-        android:layout_height="56dp"
+        android:layout_width="415dp"
+        android:layout_height="59dp"
         android:text="@string/start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView_ElapsedTime"
+        android:layout_width="276dp"
+        android:layout_height="42dp"
+        android:text="@string/elapsed_time"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_first" />
+
     <TableLayout
         android:layout_width="409dp"
-        android:layout_height="673dp"
+        android:layout_height="628dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView_ElapsedTime">
 
         <TableRow
             android:id="@+id/row1"
